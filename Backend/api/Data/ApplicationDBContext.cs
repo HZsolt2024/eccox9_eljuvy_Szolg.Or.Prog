@@ -9,8 +9,8 @@ public class ApplicationDBContext : DbContext
 {
     public ApplicationDBContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
     {
-        
+
     }
-    DbSet<Customer> Customers{get; set;}
-    DbSet<Items> Items{get; set;}
+    DbSet<Customer> Customers { get; set; }
+    DbSet<Items> Items { get; set; }
 }
