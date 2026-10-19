@@ -4,7 +4,7 @@ namespace api.Models;
 
 public class Items
 {
-    public int Id { get; set; }
+    public int Id { get; set; } //Primary key
     public string Name { get; set; } = string.Empty;
     public int Price { get; set; }
 
