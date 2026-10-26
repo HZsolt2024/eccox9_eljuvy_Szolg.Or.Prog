@@ -7,6 +7,8 @@ public class Customer
     public int Id { get; set; }  //Primary key
     public string Name { get; set; } = string.Empty;
     public int Debt { get; set; }
+
+    public List<Items> Items { get; set; } = new List<Items>();
     public DateTime CreatedOn { get; set; } = DateTime.Now;
 
 }
