@@ -1,5 +1,6 @@
 using System;
 using api.Data;
+using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -18,7 +19,8 @@ public class CustomerController : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var customers = _context.Customers.ToList();
+        var customers = _context.Customers.ToList()
+        .Select(c => c.ToCustomerDTO());
 
         return Ok(customers);
     }
@@ -33,7 +35,7 @@ public class CustomerController : ControllerBase
             return NotFound();
         }
 
-        return Ok(customer);
+        return Ok(customer.ToCustomerDTO());
     }
 
 }
