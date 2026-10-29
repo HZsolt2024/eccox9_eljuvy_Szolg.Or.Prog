@@ -1,5 +1,6 @@
 using System;
 using api.Data;
+using api.DTOs.Customer;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,6 +37,15 @@ public class CustomerController : ControllerBase
         }
 
         return Ok(customer.ToCustomerDTO());
+    }
+
+    [HttpPost]
+    public IActionResult Create([FromBody] CreateCustomerRequestDTO CustomerDTO)
+    {
+        var customerModel = CustomerDTO.ToCustomerFromCreateDTO();
+        _context.Customers.Add(customerModel);
+        _context.SaveChanges();
+        return CreatedAtAction(nameof(GetById), new { id = customerModel.Id }, customerModel.ToCustomerDTO());
     }
 
 }
