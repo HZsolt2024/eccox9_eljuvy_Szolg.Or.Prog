@@ -2,6 +2,8 @@ using System;
 
 namespace api.DTOs.Customer;
 
+
+//DTO for GET
 public class CustomerDTO
 {
     public int Id { get; set; }  //Primary key
