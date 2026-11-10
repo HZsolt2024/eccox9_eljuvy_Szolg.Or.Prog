@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vevők tartozásai</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <main class="app">
+        <header class="page-header">
+            <div>
+                <p class="eyebrow">Ügyfélkezelés</p>
+                <h1>Vevők és tartozások</h1>
+            </div>
+            <button id="refreshButton" class="button button-secondary" type="button">Lista frissítése</button>
+        </header>
+
+        <p id="pageStatus" class="status" role="status" aria-live="polite"></p>
+
+        <div class="workspace">
+            <aside class="customer-panel" aria-labelledby="customerListHeading">
+                <div class="panel-heading">
+                    <div>
+                        <h2 id="customerListHeading">Vevők</h2>
+                        <p id="customerCount" class="muted">Betöltés…</p>
+                    </div>
+                </div>
+                <label class="sr-only" for="customerFilter">Vevő keresése név alapján</label>
+                <input id="customerFilter" class="text-input" type="search" placeholder="Keresés név alapján…" autocomplete="off">
+                <ul id="customerList" class="customer-list" aria-label="Vevők listája"></ul>
+            </aside>
+
+            <section class="details-panel" aria-labelledby="detailsHeading">
+                <div id="emptySelection" class="empty-state">
+                    <h2 id="detailsHeading">Tartozások</h2>
+                    <p>Válassz egy vevőt a listából a tartozásai megtekintéséhez.</p>
+                </div>
+
+                <div id="customerDetails" hidden>
+                    <div class="panel-heading details-heading">
+                        <div>
+                            <p class="eyebrow">Kiválasztott vevő</p>
+                            <h2 id="selectedCustomerName"></h2>
+                        </div>
+                        <p id="selectedCustomerDebt" class="debt-total"></p>
+                    </div>
+
+                    <p id="detailsStatus" class="status" role="status" aria-live="polite"></p>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Tartozás megnevezése</th>
+                                    <th scope="col">Összeg</th>
+                                    <th scope="col"><span class="sr-only">Műveletek</span></th>
+                                </tr>
+                            </thead>
+                            <tbody id="itemList"></tbody>
+                        </table>
+                        <p id="emptyItems" class="empty-items" hidden>Ehhez a vevőhöz még nincs tartozás felvéve.</p>
+                    </div>
+
+                    <form id="itemForm" class="item-form">
+                        <h3 id="itemFormHeading">Új tartozás hozzáadása</h3>
+                        <div class="form-fields">
+                            <label>
+                                Megnevezés
+                                <input id="itemName" class="text-input" name="name" type="text" maxlength="200" required>
+                            </label>
+                            <label>
+                                Összeg
+                                <input id="itemPrice" class="text-input" name="price" type="number" min="0" step="1" required>
+                            </label>
+                        </div>
+                        <div class="form-actions">
+                            <button id="saveItemButton" class="button" type="submit">Hozzáadás</button>
+                            <button id="cancelEditButton" class="button button-secondary" type="button" hidden>Mégse</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
