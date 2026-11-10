@@ -1,0 +1,1 @@
+Egy model, mint Eladás, vevő névvel, telefonszámmal, és az akkor vitt itemekkel

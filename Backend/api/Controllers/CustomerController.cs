@@ -39,6 +39,7 @@ public class CustomerController : ControllerBase
         return Ok(customer.ToCustomerDTO());
     }
 
+
     [HttpPost]
     public IActionResult Create([FromBody] CreateCustomerRequestDTO CustomerDTO)
     {
@@ -47,5 +48,7 @@ public class CustomerController : ControllerBase
         _context.SaveChanges();
         return CreatedAtAction(nameof(GetById), new { id = customerModel.Id }, customerModel.ToCustomerDTO());
     }
+
+    
 
 }
