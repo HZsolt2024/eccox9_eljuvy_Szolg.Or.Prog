@@ -1,1 +1,5 @@
 Egy model, mint Eladás, vevő névvel, telefonszámmal, és az akkor vitt itemekkel
+
+A Frontend ha már van a olyan Eladás objekt, aminek a name mező megeggyezik, akkor előre kitölti, későbbi lekérdezés egyszerűsége miatt
+
+
