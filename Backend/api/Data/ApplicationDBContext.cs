@@ -11,7 +11,7 @@ public class ApplicationDBContext : DbContext
     {
 
     }
-    public DbSet<Customer> Customers { get; set; } //Add table
-    public DbSet<Items> Items { get; set; } //Add table
+    // public DbSet<Customer> Customers { get; set; } //Add table
+    // public DbSet<Items> Items { get; set; } //Add table
     public DbSet<Purchase> Purchases { get; set; } //Add table
 }

@@ -1,54 +1,54 @@
-using System;
-using api.Data;
-using api.DTOs.Customer;
-using api.Mappers;
-using Microsoft.AspNetCore.Mvc;
+// using System;
+// using api.Data;
+// using api.DTOs.Customer;
+// using api.Mappers;
+// using Microsoft.AspNetCore.Mvc;
 
 
-namespace api.Controllers;
+// namespace api.Controllers;
 
-[Route("api/customer")]
-[ApiController]
-public class CustomerController : ControllerBase
-{
-    private readonly ApplicationDBContext _context;
-    public CustomerController(ApplicationDBContext context)
-    {
-        _context = context;
-    }
+// [Route("api/customer")]
+// [ApiController]
+// public class CustomerController : ControllerBase
+// {
+//     private readonly ApplicationDBContext _context;
+//     public CustomerController(ApplicationDBContext context)
+//     {
+//         _context = context;
+//     }
 
-    [HttpGet]
-    public IActionResult GetAll()
-    {
-        var customers = _context.Customers.ToList()
-        .Select(c => c.ToCustomerDTO());
+//     [HttpGet]
+//     public IActionResult GetAll()
+//     {
+//         var customers = _context.Customers.ToList()
+//         .Select(c => c.ToCustomerDTO());
 
-        return Ok(customers);
-    }
+//         return Ok(customers);
+//     }
 
-    [HttpGet("{id}")]
-    public IActionResult GetById([FromRoute] int id)
-    {
-        var customer = _context.Customers.Find(id);
+//     [HttpGet("{id}")]
+//     public IActionResult GetById([FromRoute] int id)
+//     {
+//         var customer = _context.Customers.Find(id);
 
-        if (customer == null)
-        {
-            return NotFound();
-        }
+//         if (customer == null)
+//         {
+//             return NotFound();
+//         }
 
-        return Ok(customer.ToCustomerDTO());
-    }
+//         return Ok(customer.ToCustomerDTO());
+//     }
 
 
-    [HttpPost]
-    public IActionResult Create([FromBody] CreateCustomerRequestDTO CustomerDTO)
-    {
-        var customerModel = CustomerDTO.ToCustomerFromCreateDTO();
-        _context.Customers.Add(customerModel);
-        _context.SaveChanges();
-        return CreatedAtAction(nameof(GetById), new { id = customerModel.Id }, customerModel.ToCustomerDTO());
-    }
+//     [HttpPost]
+//     public IActionResult Create([FromBody] CreateCustomerRequestDTO CustomerDTO)
+//     {
+//         var customerModel = CustomerDTO.ToCustomerFromCreateDTO();
+//         _context.Customers.Add(customerModel);
+//         _context.SaveChanges();
+//         return CreatedAtAction(nameof(GetById), new { id = customerModel.Id }, customerModel.ToCustomerDTO());
+//     }
 
     
 
-}
+// }
