@@ -36,7 +36,9 @@ public class PurchaseController : ControllerBase
     [HttpGet("{customerName}")]
     public IActionResult GetByCustomerName([FromRoute] string customerName)
     {
-        var purchases = _context.Purchases.Where(p => p.CustomerName == customerName).ToList()
+        var normalizedName = customerName.Trim().ToLower();
+
+        var purchases = _context.Purchases.Where(p => p.CustomerName.ToLower() == normalizedName).ToList()
         .Select(p => p.ToPurchaseDTO());
         return Ok(purchases);
     }
@@ -56,5 +58,5 @@ public class PurchaseController : ControllerBase
         _context.SaveChanges();
         return CreatedAtAction(nameof(GetByCustomerName), new { customerName = purchaseModel.CustomerName }, purchaseModel.ToPurchaseDTO());
     }
-    
+
 }
