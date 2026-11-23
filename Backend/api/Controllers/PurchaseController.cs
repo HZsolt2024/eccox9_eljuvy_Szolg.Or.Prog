@@ -54,7 +54,7 @@ public class PurchaseController : ControllerBase
         };
         _context.Purchases.Add(purchaseModel);
         _context.SaveChanges();
-        return CreatedAtAction(nameof(GetAll), new { id = purchaseModel.Id }, purchaseModel.ToPurchaseDTO());
+        return CreatedAtAction(nameof(GetByCustomerName), new { customerName = purchaseModel.CustomerName }, purchaseModel.ToPurchaseDTO());
     }
     
 }
