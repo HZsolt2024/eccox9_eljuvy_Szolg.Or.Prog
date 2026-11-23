@@ -2,6 +2,7 @@ using System;
 using api.Data;
 using api.DTOs.Purchase;
 using api.Mappers;
+using api.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers;
@@ -39,4 +40,21 @@ public class PurchaseController : ControllerBase
         .Select(p => p.ToPurchaseDTO());
         return Ok(purchases);
     }
+
+    //Make a purchase
+    [HttpPost]
+    public IActionResult Create([FromBody] PurchaseDTO purchaseDTO)
+    {
+        var purchaseModel = new Purchase
+        {
+            CustomerName = purchaseDTO.CustomerName,
+            Date = purchaseDTO.Date,
+            TotalAmount = purchaseDTO.TotalAmount,
+            Items = purchaseDTO.Items
+        };
+        _context.Purchases.Add(purchaseModel);
+        _context.SaveChanges();
+        return CreatedAtAction(nameof(GetAll), new { id = purchaseModel.Id }, purchaseModel.ToPurchaseDTO());
+    }
+    
 }
