@@ -50,6 +50,20 @@ input:focus-visible {
     margin-bottom: 20px;
 }
 
+.panel {
+    min-width: 0;
+    margin-bottom: 20px;
+    padding: 24px;
+    border: 1px solid #dce3ed;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgb(25 42 70 / 7%);
+}
+
+.form-panel {
+    max-width: 850px;
+}
+
 h1,
 h2,
 h3,
@@ -120,6 +134,24 @@ h3 {
     border-radius: 7px;
     color: #172033;
     background: #fff;
+}
+
+.filter-input {
+    max-width: 320px;
+}
+
+.items-field {
+    display: grid;
+    max-width: 650px;
+    gap: 7px;
+    margin-top: 16px;
+    color: #334155;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+textarea.text-input {
+    resize: vertical;
 }
 
 .customer-list {
@@ -227,6 +259,26 @@ th:last-child {
 .empty-items {
     margin: 18px 10px;
     color: #64748b;
+}
+
+.empty-message {
+    margin: 18px 10px;
+    color: #64748b;
+}
+
+.purchase-table th:nth-child(2),
+.purchase-table td:nth-child(2),
+.purchase-table th:nth-child(4),
+.purchase-table td:nth-child(4) {
+    text-align: left;
+    white-space: normal;
+}
+
+.purchase-table th:last-child,
+.purchase-table td:last-child {
+    width: auto;
+    text-align: right;
+    white-space: nowrap;
 }
 
 .item-form {
@@ -369,7 +421,20 @@ th:last-child {
         padding: 18px;
     }
 
+    .panel {
+        padding: 18px;
+    }
+
     .form-fields {
         grid-template-columns: 1fr;
+    }
+
+    .panel > .panel-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .filter-input {
+        max-width: none;
     }
 }
